@@ -1,6 +1,6 @@
 ﻿using MelonLoader;
 
-[assembly: MelonInfo(typeof(VorrikZ_Core.Core), "VorrikZ-Core", "1.5.12", "VorrikZ", null)]
+[assembly: MelonInfo(typeof(VorrikZ_Core.Core), "VorrikZ-Core", "1.5.13", "VorrikZ", null)]
 [assembly: MelonGame("TVGS", "Schedule I")]
 
 namespace VorrikZ_Core
