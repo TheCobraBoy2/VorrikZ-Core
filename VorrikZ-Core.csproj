@@ -468,7 +468,7 @@
 		<Compile Include="Core.cs" />
 		<Compile Include="Patches\Pickpocket.cs" />
 		<Compile Include="Patches\PlayerManager.cs" />
-		<Compile Include="Patches\PlayerPatch.cs" />
+		<Compile Include="Patches\Player.cs" />
 		<Compile Include="Patches\PlayerSpawner.cs" />
 		<Compile Include="Patches\StackSize.cs" />
 		<Compile Include="Tools\Logging.cs" />

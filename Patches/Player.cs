@@ -1,16 +1,15 @@
 ﻿using HarmonyLib;
 using Il2CppScheduleOne.Persistence;
 using Il2CppScheduleOne.Persistence.Datas;
-using Il2CppScheduleOne.PlayerScripts;
 using MelonLoader;
 using VorrikZ_Core.Components;
 
 namespace VorrikZ_Core.Patches
 {
-    [HarmonyPatch(typeof(Player))]
-    public static class PlayerPatch
+    [HarmonyPatch(typeof(Il2CppScheduleOne.PlayerScripts.Player))]
+    public static class Player
     {
-        public static void Awake(Player __instance)
+        public static void Awake(Il2CppScheduleOne.PlayerScripts.Player __instance)
         {
             var backpackStorage = __instance.GetBackpackStorage();
             if (backpackStorage)
@@ -30,16 +29,17 @@ namespace VorrikZ_Core.Patches
 
         [HarmonyPatch("WriteData")]
         [HarmonyPostfix]
-        public static void WriteData(Player __instance, string parentFolderPath)
+        public static void WriteData(Il2CppScheduleOne.PlayerScripts.Player __instance, string parentFolderPath)
         {
             var backpackStorage = __instance.GetBackpackStorage();
             var contents = new ItemSet(backpackStorage.ItemSlots).GetJSON();
             __instance.Cast<ISaveable>().WriteSubfile(parentFolderPath, "Backpack", contents);
         }
 
-        [HarmonyPatch("Load", typeof(Player), typeof(string))]
+        [HarmonyPatch(typeof(Il2CppScheduleOne.PlayerScripts.Player), "Load")]
+        [HarmonyPatch(new Type[] { typeof(PlayerData), typeof(string) })]
         [HarmonyPostfix]
-        public static void Load(Player __instance, PlayerData data, string containerPath)
+        public static void Load(Il2CppScheduleOne.PlayerScripts.Player __instance, PlayerData data, string containerPath)
         {
             if (!__instance.Loader.TryLoadFile(containerPath, "Backpack", out var backpackData))
                 return;
@@ -59,7 +59,7 @@ namespace VorrikZ_Core.Patches
 
         [HarmonyPatch("LoadInventory")]
         [HarmonyPostfix]
-        public static void LoadInventory(Player __instance, ref string contentsString)
+        public static void LoadInventory(Il2CppScheduleOne.PlayerScripts.Player __instance, ref string contentsString)
         {
             if (string.IsNullOrEmpty(contentsString))
                 return;
@@ -115,7 +115,7 @@ namespace VorrikZ_Core.Patches
 
         [HarmonyPatch("OnDied")]
         [HarmonyPrefix]
-        public static void OnDied(Player __instance)
+        public static void OnDied(Il2CppScheduleOne.PlayerScripts.Player __instance)
         {
             if (!__instance.Owner.IsLocalClient)
                 return;

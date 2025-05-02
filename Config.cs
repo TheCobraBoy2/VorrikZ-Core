@@ -58,14 +58,12 @@ namespace VorrikZ_Core
     public class Config
     {
         // Categories
-        public static Category TestCategory { get; private set; }
         public static Category StackSizeCategory { get; private set; }
         public static Category MixerCategory { get; private set; }
         public static Category DryingRack { get; private set; }
         public static Category Backpack { get; private set; }
 
         // Entries
-        public static Entry<bool> TestEntry { get; private set; }
         public static Entry<int> MiscStackSize { get; private set; }
         public static Entry<int> ProductStackSize { get; private set; }
         public static Entry<int> IngredientStackSize { get; private set; }
@@ -87,23 +85,21 @@ namespace VorrikZ_Core
         public static void Init()
         {
             // Categories
-            TestCategory = new Category("Test Category", "Testing");
             StackSizeCategory = new Category("Stack Sizes", "StackSize");
             MixerCategory = new Category("Mixer", "StackSize");
             DryingRack = new Category("Drying Rack", "StackSize");
             Backpack = new Category("Backpack");
 
             // Entries
-            TestEntry = TestCategory.CreateEntry<bool>("Test1", true, "Test Entry");
             MiscStackSize = StackSizeCategory.CreateEntry<int>("Stack Size of all other un-included items like future categories", 100);
-            ProductStackSize = StackSizeCategory.CreateEntry<int>("Product Stack Size (bagged and unbagged products, jarred products, etc...)", 100);
-            IngredientStackSize = StackSizeCategory.CreateEntry<int>("Ingredient Stack Size (horse semen, mouth wash, all Consumables like Cuke/Energy Drink, etc)", 100);
-            GrowingStackSize = StackSizeCategory.CreateEntry<int>("Growing Stack Size (Fertilizer, seeds, soil, etc)", 100);
-            PackagingStackSize = StackSizeCategory.CreateEntry<int>("Packaging Stack Size (Jars/Baggies)", 100);
-            ToolsStackSize = StackSizeCategory.CreateEntry<int>("Tools Stack Size (trash bags, all other tools are disallowed from stacking)", 100);
-            LightingStackSize = StackSizeCategory.CreateEntry<int>("Lighting Stack Size (Grow lights like LED lights)", 100);
-            EquipmentStackSize = StackSizeCategory.CreateEntry<int>("Equipment Stack Size (packaging station, mixing station, etc)", 100);
-            FurnitureStackSize = StackSizeCategory.CreateEntry<int>("Furniture Stack Size (table and other various forms of non-table furnitures)", 100);
+            ProductStackSize = StackSizeCategory.CreateEntry<int>("Product Stack Size", 100);
+            IngredientStackSize = StackSizeCategory.CreateEntry<int>("Ingredient Stack Size", 100);
+            GrowingStackSize = StackSizeCategory.CreateEntry<int>("Growing Stack Size", 100);
+            PackagingStackSize = StackSizeCategory.CreateEntry<int>("Packaging Stack Size", 100);
+            ToolsStackSize = StackSizeCategory.CreateEntry<int>("Tools Stack Size", 100);
+            LightingStackSize = StackSizeCategory.CreateEntry<int>("Lighting Stack Size", 100);
+            EquipmentStackSize = StackSizeCategory.CreateEntry<int>("Equipment Stack Size", 100);
+            FurnitureStackSize = StackSizeCategory.CreateEntry<int>("Furniture Stack Size", 100);
             MixerStackSize = MixerCategory.CreateEntry<int>("OutputSize", 100);
             MixerTimePerItem = MixerCategory.CreateEntry<int>("MixerTimePerItem", 1);
             MixerEnable = MixerCategory.CreateEntry<bool>("Enable Mixer stack size change", true);
@@ -114,7 +110,6 @@ namespace VorrikZ_Core
             StorageName = Backpack.CreateEntry<string>("Name", "Backpack");
 
             // Saving
-            TestCategory.Save();
             StackSizeCategory.Save();
             MixerCategory.Save();
             DryingRack.Save();

@@ -23,7 +23,7 @@ namespace VorrikZ_Core.Patches
                 return;
             }
 
-            var player = playerPrefab.GetComponent<Player>();
+            var player = playerPrefab.GetComponent<Il2CppScheduleOne.PlayerScripts.Player>();
             if (player == null)
             {
                 Melon<Core>.Logger.Error("Player prefab does not have a Player component!");

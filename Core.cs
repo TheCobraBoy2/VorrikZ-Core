@@ -8,13 +8,13 @@ namespace VorrikZ_Core
     using VorrikZ_Core.Tools;
     public class Core : MelonMod
     {
-        private Logging logger = new Logging();
-
+        
         public override void OnInitializeMelon()
         {
+            Logging _logger = new(Logging.Prefix.CORE);
             Config.Init();
 
-            logger.Msg(Logging.Prefix.CORE, "Initialized");
+            _logger.Msg("Initialized");
         }
     }
 }
