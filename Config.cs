@@ -80,7 +80,6 @@ namespace VorrikZ_Core
         public static Entry<int> DryingRackSize { get; private set; }
         public static Entry<int> SlotCount { get; private set; }
         public static Entry<int> RowCount { get; private set; }
-        public static Entry<KeyCode> ToggleKey { get; private set; }
         public static Entry<string> StorageName { get; private set; }
         public static Entry<bool> MixerEnable { get; private set; }
         public static Entry<bool> DryingRackEnable { get; private set; }
@@ -112,7 +111,6 @@ namespace VorrikZ_Core
             DryingRackEnable = DryingRack.CreateEntry<bool>("Enable Drying Rack stack size change", true);
             SlotCount = Backpack.CreateEntry<int>("Slots", 12);
             RowCount = Backpack.CreateEntry<int>("Rows", 3);
-            ToggleKey = Backpack.CreateEntry<KeyCode>("Toggle Key", KeyCode.B);
             StorageName = Backpack.CreateEntry<string>("Name", "Backpack");
 
             // Saving

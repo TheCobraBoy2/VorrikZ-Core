@@ -50,7 +50,7 @@ namespace VorrikZ_Core.Components
         }
         private void Update()
         {
-            if (!Input.GetKeyDown(Config.ToggleKey.Value) || !_backpackEnabled)
+            if (!Input.GetKeyDown(KeyCode.B) || !_backpackEnabled)
                 return;
 
             try
